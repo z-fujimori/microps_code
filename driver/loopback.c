@@ -31,9 +31,9 @@ loopback_init(void)
     }
     dev->type = NET_DEVICE_TYPE_LOOPBACK;
     dev->mtu = LOOPBACK_MTU;
-    dev->flags |= NET_DEVICE_FLAG_LOOPBACK;
-    dev->hlen = 0; /* no header */
-    dev->alen = 0; /* no address */
+    dev->flags = NET_DEVICE_FLAG_LOOPBACK;
+    dev->hlen = 0; /* non header */
+    dev->alen = 0; /* non address */
     dev->ops = &loopback_ops;
     if (net_device_register(dev) == -1) {
         errorf("net_device_register() failure");
