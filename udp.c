@@ -82,7 +82,7 @@ udp_pcb_get(int desc)
 
 static struct udp_pcb *
 udp_pcb_alloc(void)
-{    
+{
     struct udp_pcb *pcb;
 
     for (pcb = pcbs; pcb < tailof(pcbs); pcb++) {
@@ -171,7 +171,6 @@ udp_input(const struct ip_hdr *iphdr, const uint8_t *data, size_t len, struct ip
     struct udp_pcb *pcb;
     uint16_t iphdrlen;
     struct udp_queue_entry *entry;
-
 
     if (len < sizeof(*hdr)) {
         errorf("too short");
