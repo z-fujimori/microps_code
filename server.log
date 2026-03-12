@@ -1,0 +1,2 @@
+./test/test.exe >> server.log 2>&1 &
+kill %1

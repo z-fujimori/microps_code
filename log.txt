@@ -1,0 +1,2 @@
+./test/test.exe >> log.text 2>&1 &
+kill %1
