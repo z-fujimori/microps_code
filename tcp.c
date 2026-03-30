@@ -565,6 +565,15 @@ tcp_segment_arrives(struct seg_info *seg, uint8_t flags, const uint8_t *data, si
         /*
          * 2nd check the RST bit
          */
+        if (TCP_FLG_ISSET(flags, TCP_FLG_RST)) {
+            if (acceptable) {
+                errorf("connection reset");
+                TCP_STATE_CHANGE(pcb, TCP_STATE_CLOSED);
+                tcp_pcb_release(pcb);
+            }
+            /* drop segment */
+            return;
+        }
 
         /*
          * 3rd check security and precedence (ignore)
